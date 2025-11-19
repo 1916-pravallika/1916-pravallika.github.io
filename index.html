@@ -436,6 +436,8 @@
       border:1px solid rgba(148,163,184,0.55);
       box-shadow:var(--shadow-soft);
       padding:16px 15px 14px;
+      transform:translateZ(0);
+      transition:transform 300ms ease;
     }
     .card::before{
       content:'';
@@ -445,10 +447,17 @@
       opacity:0;
       transition:opacity 220ms ease, transform 220ms ease;
       transform:translate3d(-10px,-10px,0);
+      /* IMPORTANT: don't block clicks */
+      pointer-events:none;
     }
     .card:hover::before{
       opacity:1;
       transform:translate3d(0,0,0);
+    }
+    /* ensure content is above ::before even though it doesn't take events */
+    .card > *{
+      position:relative;
+      z-index:1;
     }
 
     .card-header{
@@ -492,6 +501,12 @@
       border:1px solid rgba(148,163,184,0.55);
       color:#e5e7eb;
       background:rgba(15,23,42,0.9);
+    }
+    .actions{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:4px;
     }
 
     /* SKILLS */
@@ -607,6 +622,17 @@
       cursor:pointer;
     }
 
+    /* Reveal animations */
+    .reveal{
+      opacity:0;
+      transform:translateY(8px);
+      transition:opacity 520ms cubic-bezier(.2,.8,.2,1), transform 520ms cubic-bezier(.2,.8,.2,1);
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:none;
+    }
+
     /* Focus visible */
     :focus-visible{
       outline:2px solid var(--primary);
@@ -646,7 +672,7 @@
           <a href="#resume">Resume</a>
           <a href="#contact">Contact</a>
           <a href="#contact" class="nav-cta">
-            <span class="icon">✉</span>
+            <span class="icon" aria-hidden="true">✉</span>
             <span>Hire Me</span>
           </a>
         </nav>
@@ -658,14 +684,14 @@
       <section id="about" class="hero reveal">
         <div class="intro">
           <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
+            <span class="eyebrow-dot" aria-hidden="true"></span>
             OPEN FOR INTERNSHIPS
           </div>
 
           <h1>SRIRAM PRAVALLIKA</h1>
           <div class="intro-role">
             B.TECH CSE STUDENT
-            <span class="typed" id="typed"></span>
+            <span class="typed" id="typed" aria-hidden="false"></span>
           </div>
 
           <p class="lead">
@@ -695,7 +721,7 @@
           </div>
 
           <div class="badge-chip">
-            <span class="dot"></span>
+            <span class="dot" aria-hidden="true"></span>
             <span>Actively seeking Summer / Fall internships</span>
           </div>
         </div>
@@ -735,7 +761,7 @@
               <div class="contact-label">GitHub</div>
               <div class="contact-value">
                 <a href="https://github.com/1916-pravallika" target="_blank" rel="noopener noreferrer">
-                  github.com/1916pravallika
+                  github.com/1916-pravallika
                 </a>
               </div>
             </div>
@@ -768,29 +794,27 @@
         <div class="section-divider"></div>
 
         <div class="grid">
-          <!-- Weather App -->
+          <!-- Weather App (frontend-only) -->
           <article class="card" data-tilt>
             <div class="card-header">
               <div class="card-title">
                 <span>☁</span>
-                <span>Weather App — Full Stack</span>
+                <span>Weather App — Frontend</span>
               </div>
-              <span class="pill-badge">End-to-End Project</span>
+              <span class="pill-badge">Client-side App</span>
             </div>
             <p>
-              A responsive weather application that works across devices and provides live weather updates and a
-              5-day forecast based on the user’s current location or city search. Frontend built with React + Vite
-              for speed and smooth navigation, and a Spring Boot backend handling API calls, validation, and MySQL
-              persistence. Integrated with the OpenWeatherMap API.
+              A responsive weather application built with React + Vite. This implementation is frontend-only:
+              the app fetches data directly from the OpenWeatherMap API on the client (or uses mock data during development).
+              There is no server-side backend in this project.
             </p>
 
             <div class="tags">
               <span class="tag">React.js</span>
               <span class="tag">Vite</span>
-              <span class="tag">Spring Boot</span>
-              <span class="tag">REST API</span>
-              <span class="tag">OpenWeatherMap API</span>
-              <span class="tag">MySQL</span>
+              <span class="tag">REST API (public)</span>
+              <span class="tag">OpenWeatherMap</span>
+              <span class="tag">LocalStorage</span>
             </div>
 
             <div class="actions">
@@ -806,27 +830,25 @@
             </div>
           </article>
 
-          <!-- Food Recipe App -->
+          <!-- Food Recipe App (frontend-only) -->
           <article class="card" data-tilt>
             <div class="card-header">
               <div class="card-title">
                 <span>🍳</span>
-                <span>Food Recipe App</span>
+                <span>Food Recipe App — Frontend</span>
               </div>
-              <span class="pill-badge">Dockerized Full Stack</span>
+              <span class="pill-badge">Client-side UI</span>
             </div>
             <p>
-              A full-stack recipe application where users can browse and search recipes, view ingredients, and follow
-              step-by-step instructions. Features category-based discovery, clean layout, and a responsive interface.
-              The project is containerized using Docker, with separate services for the React frontend and Spring Boot backend.
+              A clean, responsive recipe UI built with React + Vite. This project is frontend-only — it consumes public
+              recipe JSON or local mock files and stores user preferences in LocalStorage. There is no server-side API required.
             </p>
 
             <div class="tags">
               <span class="tag">React.js</span>
               <span class="tag">Vite</span>
-              <span class="tag">Spring Boot</span>
-              <span class="tag">REST API</span>
-              <span class="tag">Docker</span>
+              <span class="tag">Local JSON</span>
+              <span class="tag">Responsive UI</span>
             </div>
 
             <div class="actions">
@@ -906,11 +928,11 @@
             </div>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <!-- Make sure Resume.pdf is in the same folder as index.html -->
-            <a class="btn btn-outline" href="Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <!-- Make sure Resume.pdf is in the same folder or correct path -->
+            <a class="btn btn-outline" href="Resume.pdf" target="_blank" rel="noopener noreferrer" data-check="true">
               View PDF
             </a>
-            <a class="btn btn-primary" href="Resume.pdf" download="Sriram-Pravallika-Resume.pdf">
+            <a class="btn btn-primary" href="Resume.pdf" download="Sriram-Pravallika-Resume.pdf" data-check="true">
               Download Resume
             </a>
           </div>
@@ -930,42 +952,49 @@
 
   <!-- Case study modal -->
   <div id="modal" class="modal" role="dialog" aria-hidden="true" onclick="handleBackdropClick(event)">
-    <div class="modal-content" id="modal-content" onclick="event.stopPropagation()">
+    <div class="modal-content" id="modal-content" tabindex="-1" onclick="event.stopPropagation()">
       <button class="close" type="button" onclick="closeModal()" aria-label="Close case study">✕</button>
       <div id="case-html"></div>
     </div>
   </div>
 
   <script>
+    console.log("Portfolio JS loaded");
+
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Typed accent
+    // Typed accent - safe default phrases
     const typedEl = document.getElementById('typed');
     const phrases = [
-    
-      
+      'Software Engineer Intern',
+      'Full-Stack Developer',
+      'Java • Spring Boot • React'
     ];
-    let i=0, j=0, forward=true;
-    (function tick(){
-      const full = phrases[i];
-      typedEl.textContent = full.slice(0,j);
-      if(forward){
-        j++;
-        if(j>full.length){
-          forward=false;
-          setTimeout(tick,700);
-          return;
+    if (!typedEl || !Array.isArray(phrases) || phrases.length === 0) {
+      if (typedEl) typedEl.style.display = 'none';
+    } else {
+      let i=0, j=0, forward=true;
+      (function tick(){
+        const full = typeof phrases[i] === 'string' ? phrases[i] : '';
+        typedEl.textContent = full.slice(0,j);
+        if(forward){
+          j++;
+          if(j>full.length){
+            forward=false;
+            setTimeout(tick,700);
+            return;
+          }
+        } else {
+          j--;
+          if(j<0){
+            forward=true;
+            i=(i+1)%phrases.length;
+            j=0;
+          }
         }
-      } else {
-        j--;
-        if(j<0){
-          forward=true;
-          i=(i+1)%phrases.length;
-          j=0;
-        }
-      }
-      setTimeout(tick,80);
-    })();
+        setTimeout(tick,80);
+      })();
+    }
 
     function openCase(which){
       const modal = document.getElementById('modal');
@@ -973,81 +1002,61 @@
 
       if(which === 'weather'){
         content.innerHTML = `
-          <h2 style="color:var(--primary)">Weather App — Full Stack Case Study</h2>
+          <h2 style="color:var(--primary)">Weather App — Frontend Case Study</h2>
           <p>
-            <strong>Short Description:</strong> A responsive full-stack weather application that provides real-time
-            weather data and a 5-day forecast using the OpenWeatherMap API, with a React + Vite frontend and a
-            Spring Boot backend connected to MySQL.
+            <strong>Short Description:</strong> A responsive frontend weather application that provides real-time
+            weather data and a 5-day forecast by fetching public data directly from the OpenWeatherMap API
+            (client-side). This project has no server-side backend — for dev/testing it can use mocked JSON.
           </p>
           <h3>Problem / Goal</h3>
           <p>
-            Many weather apps are either slow, cluttered, or lack clear breakdowns of current and upcoming conditions.
-            My goal was to build a simple, fast, and responsive app that shows key weather details at a glance, supports
-            both location-based and manual search, and demonstrates integration of a third-party API in a clean full-stack
-            architecture.
+            Build a fast, simple and responsive weather UI that surfaces key details clearly while keeping the
+            architecture client-first (no backend).
           </p>
           <h3>My Role &amp; Responsibilities</h3>
           <ol>
-            <li>Designed the overall architecture, separating the React frontend and Spring Boot backend.</li>
-            <li>Implemented the UI using React and Vite with reusable components and client-side routing.</li>
-            <li>Integrated the OpenWeatherMap API on the backend, including error handling and response mapping.</li>
-            <li>Configured MySQL for storing user queries/logs (for potential analytics and future improvements).</li>
-            <li>Handled environment configuration and API key management.</li>
+            <li>Designed UI and client-side data flow using React + Vite.</li>
+            <li>Implemented client-side API calls to OpenWeatherMap and handled loading/error states.</li>
+            <li>Used LocalStorage to persist simple user preferences and recent searches.</li>
+            <li>Added responsive styles and small performance optimizations for mobile.</li>
           </ol>
           <h3>Tech Stack</h3>
-          <p>React.js, Vite, Spring Boot, REST API, OpenWeatherMap API, MySQL, Git &amp; GitHub</p>
+          <p>React.js, Vite, OpenWeatherMap (public REST), LocalStorage, Git &amp; GitHub</p>
           <h3>Key Features</h3>
           <ul>
-            <li>Current weather based on user location or city name.</li>
-            <li>5-day forecast displayed in a clean, card-based layout.</li>
-            <li>Responsive design for desktop and mobile screens.</li>
-            <li>Clear separation between presentation (frontend) and business logic (backend).</li>
+            <li>Fetches current weather and 5-day forecast from a public API from the client.</li>
+            <li>Location-based and manual city search.</li>
+            <li>Responsive card-based UI and small stateful client caching.</li>
+            <li>No backend required — suitable as a lightweight client app.</li>
           </ul>
         `;
       } else if (which === 'food') {
         content.innerHTML = `
-          <h2 style="color:var(--primary)">Food Recipe App — Dockerized Full Stack Project</h2>
+          <h2 style="color:var(--primary)">Food Recipe App — Frontend Case Study</h2>
           <p>
-            <strong>Short Description:</strong> A full-stack recipe application where users can browse and search
-            for recipes, view ingredients, and follow step-by-step cooking instructions. The project uses a
-            Dockerized architecture with separate containers for the frontend and backend.
+            <strong>Short Description:</strong> A clean, responsive recipe UI built with React + Vite. The app
+            reads recipes from local JSON or public endpoints and stores user preferences locally. There is
+            no server-side backend required for the demo version.
           </p>
           <h3>Problem / Goal</h3>
           <p>
-            Many recipe websites are cluttered and filled with distractions. I wanted to build a clean, fast,
-            and developer-friendly recipe app that also demonstrates how to structure and containerize a modern
-            full-stack project.
+            Provide a distraction-free recipe browsing experience with clear steps and a focus on readability.
           </p>
           <h3>My Role &amp; Responsibilities</h3>
           <ol>
-            <li>Designed the UI in React with a focus on clarity and readability of recipe steps.</li>
-            <li>Built the backend REST APIs in Spring Boot to serve recipe data and handle core business logic.</li>
-            <li>Containerized frontend and backend using Docker and configured them to work together.</li>
-            <li>Wired up API integration between React and Spring Boot, handling loading and error states.</li>
-            <li>Ensured the layout remained responsive across different screen sizes.</li>
+            <li>Designed and implemented the UI components and client-side navigation.</li>
+            <li>Built client-side data handling to load recipes from JSON or public endpoints.</li>
+            <li>Handled search/filtering on the client and persisted favorites in LocalStorage.</li>
+            <li>Tested responsiveness across devices and optimized the layout.</li>
           </ol>
-          <h3>Architecture</h3>
-          <ul>
-            <li><strong>Frontend:</strong> React.js + Vite bundled app running in its own Docker container.</li>
-            <li><strong>Backend:</strong> Spring Boot REST API in a separate Docker container.</li>
-            <li><strong>Communication:</strong> Frontend consumes backend endpoints over HTTP using fetch/axios.</li>
-          </ul>
+          <h3>Tech Stack</h3>
+          <p>React.js, Vite, Local JSON/public APIs, LocalStorage, Git &amp; GitHub</p>
           <h3>Key Features</h3>
           <ul>
-            <li>Recipe listing with titles and quick descriptions.</li>
-            <li>Detailed view showing ingredients and preparation steps.</li>
-            <li>Search/filter functionality (e.g., by name/category, depending on backend support).</li>
-            <li>Responsive design suitable for both mobile and desktop users.</li>
-            <li>Docker setup allowing the entire app to run with simple Docker commands.</li>
-          </ul>
-          <h3>Tech Stack</h3>
-          <p>React.js, Vite, Spring Boot, REST API, Docker, Git &amp; GitHub</p>
-          <h3>What I Learned</h3>
-          <ul>
-            <li>How to structure and containerize a full-stack application using Docker.</li>
-            <li>How to connect a React frontend with a Spring Boot backend through REST APIs.</li>
-            <li>Better separation of concerns between UI layer and business logic.</li>
-            <li>Debugging API-related issues between services running in separate containers.</li>
+            <li>Recipe listing with quick descriptions and detailed step-by-step views.</li>
+            <li>Client-side search and category filtering.</li>
+            <li>Favorites saved to LocalStorage for a persistent experience without a backend.</li>
+            <li>Responsive design for both mobile and desktop users.</li>
           </ul>
           <p style="margin-top:10px;">
             <strong>Code:</strong>
@@ -1063,7 +1072,14 @@
 
       modal.classList.add('open');
       modal.setAttribute('aria-hidden','false');
+
+      // Move focus to modal-content for accessibility
+      const modalContent = document.getElementById('modal-content');
+      if (modalContent) modalContent.focus();
     }
+
+    // make openCase accessible for inline onclick
+    window.openCase = openCase;
 
     function closeModal(){
       const modal = document.getElementById('modal');
@@ -1072,7 +1088,7 @@
     }
 
     function handleBackdropClick(e){
-      if(e.target.id === 'modal'){
+      if(e.target && e.target.id === 'modal'){
         closeModal();
       }
     }
@@ -1080,7 +1096,7 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         const modal = document.getElementById('modal');
-        if (modal.classList.contains('open')) {
+        if (modal && modal.classList.contains('open')) {
           closeModal();
         }
       }
@@ -1109,6 +1125,8 @@
       });
     },{threshold:0.14});
     document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+   
   </script>
 </body>
 </html>
