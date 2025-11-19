@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SRIRAM PRAVALLIKA | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#020817;
+      --bg-accent:#071525;
+      --surface:#0b1220;
+      --surface-soft:#111827;
+      --muted:#9ca3af;
+      --text:#e5e7eb;
+      --primary:#38bdf8;
+      --primary-soft:rgba(56,189,248,0.16);
+      --accent:#22c55e;
+      --accent-soft:rgba(34,197,94,0.18);
+      --danger:#f97373;
+      --border-soft:rgba(148,163,184,0.25);
+      --radius-xl:18px;
+      --radius-lg:14px;
+      --radius-pill:999px;
+      --shadow-soft:0 18px 40px rgba(15,23,42,0.85);
+      --shadow-chip:0 10px 18px rgba(15,23,42,0.6);
+      --max-width:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      padding:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(900px 360px at 12% 0%, rgba(56,189,248,0.22), transparent 60%),
+        radial-gradient(580px 360px at 90% 100%, rgba(34,197,94,0.20), transparent 55%),
+        radial-gradient(800px 800px at 50% 10%, rgba(15,23,42,0.9), #020617 60%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+
+    /* top glow */
+    .top-glow{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:0.4;
+      mix-blend-mode:screen;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(56,189,248,0.4), transparent 60%),
+        radial-gradient(circle at 92% 10%, rgba(34,197,94,0.36), transparent 60%);
+      z-index:0;
+    }
+
+    .page-shell{
+      position:relative;
+      z-index:1;
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:18px 18px 60px;
+    }
+
+    /* NAVBAR */
+    header.site-nav{
+      position:sticky;
+      top:10px;
+      z-index:40;
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 14px;
+      background:linear-gradient(120deg, rgba(15,23,42,0.94), rgba(15,23,42,0.85));
+      backdrop-filter:blur(18px);
+      border-radius:var(--radius-xl);
+      border:1px solid rgba(148,163,184,0.35);
+      box-shadow:0 18px 40px rgba(15,23,42,0.9);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .brand-avatar{
+      width:46px;height:46px;
+      border-radius:16px;
+      background:radial-gradient(circle at 20% 0%, #e0f2fe, #38bdf8);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#0b1120;
+      font-weight:800;
+      font-family:Montserrat;
+      box-shadow:var(--shadow-chip);
+      letter-spacing:0.6px;
+    }
+    .brand-label-title{
+      font-family:Montserrat;
+      font-weight:700;
+      font-size:15px;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+    }
+    .brand-label-sub{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .nav-links a{
+      font-size:13px;
+      text-decoration:none;
+      color:var(--muted);
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      transition:all 160ms ease;
+      position:relative;
+    }
+    .nav-links a::after{
+      content:'';
+      position:absolute;
+      inset:auto 12px -3px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--primary), var(--accent));
+      opacity:0;
+      transform:scaleX(0.5);
+      transition:all 160ms ease;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      border-color:rgba(148,163,184,0.4);
+      background:rgba(15,23,42,0.9);
+      transform:translateY(-1px);
+    }
+    .nav-links a:hover::after{
+      opacity:1;
+      transform:scaleX(1);
+    }
+
+    .nav-cta{
+      padding:7px 14px;
+      border-radius:999px;
+      background:linear-gradient(120deg, var(--primary), var(--accent));
+      color:#020617;
+      font-weight:600;
+      font-size:13px;
+      text-decoration:none;
+      box-shadow:0 12px 28px rgba(15,23,42,0.9);
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .nav-cta span.icon{
+      font-size:14px;
+    }
+
+    /* HERO */
+    main{margin-top:30px}
+    .hero{
+      display:grid;
+      grid-template-columns:minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap:26px;
+      align-items:flex-start;
+      margin-bottom:40px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(148,163,184,0.6);
+      box-shadow:0 10px 26px rgba(15,23,42,0.9);
+      font-size:11px;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.12em;
+    }
+    .eyebrow-dot{
+      width:7px;height:7px;border-radius:999px;
+      background:radial-gradient(circle at 30% 0%, #bbf7d0, #22c55e);
+      box-shadow:0 0 12px rgba(34,197,94,0.8);
+    }
+
+    .intro h1{
+      font-family:Montserrat;
+      font-size:30px;
+      margin:10px 0 8px;
+      color:#f9fafb;
+      letter-spacing:0.03em;
+      text-transform:uppercase;
+    }
+    .intro-role{
+      font-size:14px;
+      color:var(--muted);
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    .typed{
+      display:inline-block;
+      border-right:2px solid rgba(148,163,184,0.6);
+      padding-right:5px;
+      margin-left:6px;
+      min-width:120px;
+      white-space:nowrap;
+      font-weight:500;
+      color:var(--accent);
+    }
+
+    .intro .lead{
+      font-size:14px;
+      color:#d1d5db;
+      margin-bottom:14px;
+      max-width:42rem;
+    }
+    .intro ul{
+      margin:0;
+      padding-left:18px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .hero-cta-row{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      border:none;
+      padding:9px 14px;
+      border-radius:var(--radius-pill);
+      font-weight:600;
+      font-size:13px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      text-decoration:none;
+      transition:transform 140ms ease, box-shadow 140ms ease, background 140ms ease, color 140ms ease;
+    }
+    .btn-primary{
+      background:linear-gradient(120deg,var(--primary),var(--accent));
+      color:#020617;
+      box-shadow:0 16px 32px rgba(15,23,42,0.9);
+    }
+    .btn-outline{
+      background:rgba(15,23,42,0.9);
+      color:var(--text);
+      border:1px solid rgba(148,163,184,0.6);
+    }
+    .btn-subtle{
+      background:rgba(15,23,42,0.8);
+      color:var(--muted);
+      border:1px dashed rgba(148,163,184,0.6);
+      font-weight:500;
+    }
+    .btn:hover{
+      transform:translateY(-1px);
+      box-shadow:0 12px 28px rgba(15,23,42,0.9);
+    }
+    .btn:active{
+      transform:translateY(0);
+      box-shadow:none;
+    }
+
+    .badge-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(56,189,248,0.4);
+      color:var(--muted);
+      font-size:11px;
+      margin-top:10px;
+    }
+    .badge-chip span.dot{
+      width:7px;height:7px;border-radius:50%;
+      background:radial-gradient(circle at 30% 0%, #cffafe, #38bdf8);
+    }
+
+    /* Right column / contact card */
+    .sidebar-card{
+      border-radius:var(--radius-xl);
+      background:radial-gradient(circle at 0% 0%, rgba(56,189,248,0.16), transparent 55%), rgba(15,23,42,0.96);
+      border:1px solid rgba(148,163,184,0.5);
+      box-shadow:var(--shadow-soft);
+      padding:18px 16px 16px;
+    }
+    .sidebar-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:10px;
+      font-size:13px;
+    }
+    .sidebar-title{
+      font-weight:600;
+      color:#f9fafb;
+    }
+    .sidebar-pill{
+      padding:4px 9px;
+      border-radius:999px;
+      font-size:11px;
+      background:rgba(22,163,74,0.1);
+      color:#bbf7d0;
+      border:1px solid rgba(34,197,94,0.5);
+    }
+    .contact-item{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 0;
+      border-bottom:1px dashed rgba(51,65,85,0.8);
+      font-size:13px;
+    }
+    .contact-item:last-child{border-bottom:none}
+    .contact-label{
+      color:var(--muted);
+      font-weight:500;
+      min-width:60px;
+    }
+    .contact-value a{
+      color:#e5e7eb;
+      text-decoration:none;
+      word-break:break-all;
+    }
+    .contact-value a:hover{
+      color:var(--primary);
+      text-decoration:underline;
+    }
+
+    .availability-card{
+      margin-top:14px;
+      padding:12px 12px 11px;
+      border-radius:var(--radius-lg);
+      background:rgba(22,163,74,0.12);
+      border:1px solid rgba(34,197,94,0.6);
+      font-size:12px;
+      color:#bbf7d0;
+      display:flex;
+      align-items:flex-start;
+      gap:8px;
+    }
+    .availability-dot{
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      margin-top:3px;
+      background:radial-gradient(circle at 30% 0%, #bbf7d0, #22c55e);
+      box-shadow:0 0 12px rgba(34,197,94,0.9);
+    }
+    .availability-title{
+      font-weight:600;
+      margin-bottom:2px;
+      color:#e5fbee;
+    }
+
+    /* SECTION HEADER */
+    .section-header{
+      margin-bottom:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:10px;
+    }
+    .section-header-main{
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+    }
+    .section-kicker{
+      font-size:11px;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .section-title{
+      font-family:Montserrat;
+      font-size:17px;
+      letter-spacing:0.09em;
+      text-transform:uppercase;
+      color:#e5e7eb;
+    }
+    .section-subtitle{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .section-divider{
+      height:1px;
+      background:linear-gradient(90deg, rgba(148,163,184,0.4), transparent);
+      margin-bottom:20px;
+      border-radius:999px;
+    }
+
+    /* PROJECT CARDS */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+    }
+    @media (min-width:1040px){
+      .grid{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+      }
+    }
+    .card{
+      position:relative;
+      overflow:hidden;
+      border-radius:var(--radius-xl);
+      background:radial-gradient(circle at 0% 0%, rgba(56,189,248,0.16), transparent 55%), rgba(15,23,42,0.98);
+      border:1px solid rgba(148,163,184,0.55);
+      box-shadow:var(--shadow-soft);
+      padding:16px 15px 14px;
+    }
+    .card::before{
+      content:'';
+      position:absolute;
+      inset:-40%;
+      background:radial-gradient(circle at 0% 0%, rgba(56,189,248,0.16), transparent 55%);
+      opacity:0;
+      transition:opacity 220ms ease, transform 220ms ease;
+      transform:translate3d(-10px,-10px,0);
+    }
+    .card:hover::before{
+      opacity:1;
+      transform:translate3d(0,0,0);
+    }
+
+    .card-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+      margin-bottom:8px;
+    }
+    .card-title{
+      font-size:14px;
+      font-weight:600;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      color:#f9fafb;
+    }
+    .pill-badge{
+      font-size:11px;
+      padding:2px 8px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.7);
+      color:var(--muted);
+      background:rgba(15,23,42,0.9);
+    }
+    .card p{
+      margin:0 0 8px;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-bottom:10px;
+    }
+    .tag{
+      padding:4px 9px;
+      border-radius:999px;
+      font-size:11px;
+      border:1px solid rgba(148,163,184,0.55);
+      color:#e5e7eb;
+      background:rgba(15,23,42,0.9);
+    }
+
+    /* SKILLS */
+    .skills-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .skill-pill{
+      padding:6px 11px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.96);
+      border:1px solid rgba(148,163,184,0.65);
+      font-size:12px;
+      color:#d1d5db;
+    }
+
+    /* RESUME */
+    .resume-card{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      border-radius:var(--radius-xl);
+      background:radial-gradient(circle at 0% 0%, rgba(56,189,248,0.16), transparent 55%), rgba(15,23,42,0.98);
+      border:1px solid rgba(148,163,184,0.55);
+      box-shadow:var(--shadow-soft);
+      padding:15px 15px 14px;
+      font-size:13px;
+    }
+    .resume-meta-title{
+      font-weight:600;
+      color:#f9fafb;
+      margin-bottom:4px;
+    }
+    .resume-meta-sub{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    /* FOOTER */
+    footer{
+      margin-top:32px;
+      padding:14px 0 0;
+      font-size:11px;
+      color:var(--muted);
+      border-top:1px dashed rgba(51,65,85,0.9);
+      display:flex;
+      justify-content:space-between;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    footer a{
+      color:var(--primary);
+      text-decoration:none;
+    }
+    footer a:hover{
+      text-decoration:underline;
+    }
+
+    /* MODAL */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:radial-gradient(circle at 10% 0%, rgba(56,189,248,0.25), transparent 60%), rgba(15,23,42,0.95);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:60;
+    }
+    .modal.open{display:flex}
+    .modal-content{
+      background:radial-gradient(circle at 0% 0%, rgba(56,189,248,0.18), transparent 55%), rgba(15,23,42,0.98);
+      padding:20px 18px 18px;
+      border-radius:var(--radius-xl);
+      max-width:820px;
+      width:100%;
+      max-height:88vh;
+      overflow:auto;
+      border:1px solid rgba(148,163,184,0.7);
+      box-shadow:0 30px 60px rgba(15,23,42,0.95);
+      font-size:13px;
+    }
+    .modal-content h2{
+      margin-top:0;
+      font-family:Montserrat;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      font-size:14px;
+      margin-bottom:6px;
+    }
+    .modal-content h3{
+      margin-bottom:5px;
+      margin-top:14px;
+      font-size:13px;
+      color:#e5e7eb;
+    }
+    .modal-content p,
+    .modal-content li{
+      color:var(--muted);
+      font-size:12px;
+    }
+    .close{
+      position:absolute;
+      top:10px;
+      right:10px;
+      border:none;
+      background:transparent;
+      font-size:18px;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    /* Focus visible */
+    :focus-visible{
+      outline:2px solid var(--primary);
+      outline-offset:2px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;gap:18px}
+    }
+    @media (max-width:640px){
+      .nav-links{display:none}
+      .page-shell{padding:14px 14px 40px}
+      .hero{margin-top:8px}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="top-glow"></div>
+
+  <div class="page-shell">
+    <!-- NAV -->
+    <header class="site-nav">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="brand-avatar">SP</div>
+          <div class="brand-label">
+            <div class="brand-label-title">SRIRAM PRAVALLIKA</div>
+            <div class="brand-label-sub">B.Tech CSE • 9.58 CGPA</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#resume">Resume</a>
+          <a href="#contact">Contact</a>
+          <a href="#contact" class="nav-cta">
+            <span class="icon">✉</span>
+            <span>Hire Me</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ABOUT -->
+      <section id="about" class="hero reveal">
+        <div class="intro">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            OPEN FOR INTERNSHIPS
+          </div>
+
+          <h1>SRIRAM PRAVALLIKA</h1>
+          <div class="intro-role">
+            B.TECH CSE STUDENT
+            <span class="typed" id="typed"></span>
+          </div>
+
+          <p class="lead">
+            Hi, I’m <strong>Pravallika</strong>, a B.Tech Computer Science student with a CGPA of
+            <strong>9.58</strong>, passionate about problem solving, innovation, and software development.
+            I’m looking for an internship where I can apply my programming skills and engineering knowledge
+            to real-world projects. I enjoy collaborating with teams, taking initiative, and continuously
+            learning to build impactful tech solutions.
+          </p>
+
+          <ul>
+            <li>Strong in Java, web development, and REST APIs</li>
+            <li>Clean, modular, and maintainable coding practices</li>
+            <li>Comfortable working in teams and communicating clearly</li>
+          </ul>
+
+          <div class="hero-cta-row">
+            <a href="#projects" class="btn btn-primary">
+              View Projects
+            </a>
+            <a href="#resume" class="btn btn-outline">
+              View Resume
+            </a>
+            <a href="#contact" class="btn btn-subtle">
+              Let’s Connect
+            </a>
+          </div>
+
+          <div class="badge-chip">
+            <span class="dot"></span>
+            <span>Actively seeking Summer / Fall internships</span>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDEBAR -->
+        <aside>
+          <div class="sidebar-card reveal" id="contact">
+            <div class="sidebar-header">
+              <div class="sidebar-title">Contact Details</div>
+              <div class="sidebar-pill">Based in India • IST</div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-label">Email</div>
+              <div class="contact-value">
+                <a href="mailto:2300030652cse2@gmail.com">2300030652cse2@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-label">Phone</div>
+              <div class="contact-value">
+                <a href="tel:+916303926873">+91 63039 26873</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">
+                <a href="https://www.linkedin.com/in/pravallika-sriram-277456282" target="_blank" rel="noopener noreferrer">
+                  linkedin.com/in/pravallika-sriram-277456282
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-label">GitHub</div>
+              <div class="contact-value">
+                <a href="https://github.com/1916-pravallika" target="_blank" rel="noopener noreferrer">
+                  github.com/1916pravallika
+                </a>
+              </div>
+            </div>
+
+            <div class="availability-card">
+              <div class="availability-dot"></div>
+              <div>
+                <div class="availability-title">Availability</div>
+                <div>
+                  Open to internship opportunities for Summer / Fall.
+                  Comfortable with remote work and relocation.
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="section reveal">
+        <div class="section-header">
+          <div class="section-header-main">
+            <div class="section-kicker">PROJECTS</div>
+            <div class="section-title">Featured Work</div>
+          </div>
+          <div class="section-subtitle">
+            A glimpse of the applications I’ve built using modern web technologies.
+          </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="grid">
+          <!-- Weather App -->
+          <article class="card" data-tilt>
+            <div class="card-header">
+              <div class="card-title">
+                <span>☁</span>
+                <span>Weather App — Full Stack</span>
+              </div>
+              <span class="pill-badge">End-to-End Project</span>
+            </div>
+            <p>
+              A responsive weather application that works across devices and provides live weather updates and a
+              5-day forecast based on the user’s current location or city search. Frontend built with React + Vite
+              for speed and smooth navigation, and a Spring Boot backend handling API calls, validation, and MySQL
+              persistence. Integrated with the OpenWeatherMap API.
+            </p>
+
+            <div class="tags">
+              <span class="tag">React.js</span>
+              <span class="tag">Vite</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">REST API</span>
+              <span class="tag">OpenWeatherMap API</span>
+              <span class="tag">MySQL</span>
+            </div>
+
+            <div class="actions">
+              <button class="btn btn-outline" type="button" onclick="openCase('weather')">
+                Read Case Study
+              </button>
+              <a class="btn btn-primary"
+                 href="https://github.com/1916-pravallika/clients"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                 View Code
+              </a>
+            </div>
+          </article>
+
+          <!-- Food Recipe App -->
+          <article class="card" data-tilt>
+            <div class="card-header">
+              <div class="card-title">
+                <span>🍳</span>
+                <span>Food Recipe App</span>
+              </div>
+              <span class="pill-badge">Dockerized Full Stack</span>
+            </div>
+            <p>
+              A full-stack recipe application where users can browse and search recipes, view ingredients, and follow
+              step-by-step instructions. Features category-based discovery, clean layout, and a responsive interface.
+              The project is containerized using Docker, with separate services for the React frontend and Spring Boot backend.
+            </p>
+
+            <div class="tags">
+              <span class="tag">React.js</span>
+              <span class="tag">Vite</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">REST API</span>
+              <span class="tag">Docker</span>
+            </div>
+
+            <div class="actions">
+              <button class="btn btn-outline" type="button" onclick="openCase('food')">
+                Read Case Study
+              </button>
+              <a class="btn btn-primary"
+                 href="https://github.com/1916-pravallika/docker-foodapp-frontend"
+                 target="_blank"
+                 rel="noopener noreferrer">
+                 View Code
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="section reveal" style="margin-top:40px;">
+        <div class="section-header">
+          <div class="section-header-main">
+            <div class="section-kicker">SKILLS</div>
+            <div class="section-title">What I Work With</div>
+          </div>
+          <div class="section-subtitle">
+            A mix of backend, frontend, and deployment skills with a focus on learning depth over buzzwords.
+          </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div style="margin-bottom:10px;font-size:12px;color:var(--muted);">Technical</div>
+        <div class="skills-list">
+          <div class="skill-pill">Java</div>
+          <div class="skill-pill">Python (Beginner)</div>
+          <div class="skill-pill">JavaScript</div>
+          <div class="skill-pill">React.js</div>
+          <div class="skill-pill">Vite</div>
+          <div class="skill-pill">Spring Boot</div>
+          <div class="skill-pill">Node.js</div>
+          <div class="skill-pill">MySQL</div>
+          <div class="skill-pill">MongoDB</div>
+          <div class="skill-pill">REST APIs</div>
+          <div class="skill-pill">HTML5 / CSS3</div>
+          <div class="skill-pill">Docker (Basics)</div>
+          <div class="skill-pill">Git &amp; GitHub</div>
+        </div>
+
+        <div style="margin-top:18px;font-size:12px;color:var(--muted);">Soft Skills</div>
+        <div class="skills-list" style="margin-top:6px;">
+          <div class="skill-pill">Problem Solving</div>
+          <div class="skill-pill">Communication</div>
+          <div class="skill-pill">Time Management</div>
+          <div class="skill-pill">Critical Thinking</div>
+          <div class="skill-pill">Adaptability</div>
+          <div class="skill-pill">Teamwork</div>
+        </div>
+      </section>
+
+      <!-- RESUME -->
+      <section id="resume" class="section reveal" style="margin-top:40px;">
+        <div class="section-header">
+          <div class="section-header-main">
+            <div class="section-kicker">RESUME</div>
+            <div class="section-title">Download</div>
+          </div>
+          <div class="section-subtitle">
+            One-page summary of my education, skills, and projects.
+          </div>
+        </div>
+        <div class="section-divider"></div>
+
+        <div class="resume-card">
+          <div>
+            <div class="resume-meta-title">SRIRAM PRAVALLIKA — Resume</div>
+            <div class="resume-meta-sub">
+              Third-year B.Tech Computer Science student seeking Software Engineering / Web Development Intern roles.
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <!-- Make sure Resume.pdf is in the same folder as index.html -->
+            <a class="btn btn-outline" href="Resume.pdf" target="_blank" rel="noopener noreferrer">
+              View PDF
+            </a>
+            <a class="btn btn-primary" href="Resume.pdf" download="Sriram-Pravallika-Resume.pdf">
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div>
+          © <span id="year"></span> SRIRAM PRAVALLIKA — Built with HTML, CSS &amp; vanilla JS
+        </div>
+        <div>
+          Prefer email? <a href="mailto:2300030652cse2@gmail.com">2300030652cse2@gmail.com</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Case study modal -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true" onclick="handleBackdropClick(event)">
+    <div class="modal-content" id="modal-content" onclick="event.stopPropagation()">
+      <button class="close" type="button" onclick="closeModal()" aria-label="Close case study">✕</button>
+      <div id="case-html"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Typed accent
+    const typedEl = document.getElementById('typed');
+    const phrases = [
+    
+      
+    ];
+    let i=0, j=0, forward=true;
+    (function tick(){
+      const full = phrases[i];
+      typedEl.textContent = full.slice(0,j);
+      if(forward){
+        j++;
+        if(j>full.length){
+          forward=false;
+          setTimeout(tick,700);
+          return;
+        }
+      } else {
+        j--;
+        if(j<0){
+          forward=true;
+          i=(i+1)%phrases.length;
+          j=0;
+        }
+      }
+      setTimeout(tick,80);
+    })();
+
+    function openCase(which){
+      const modal = document.getElementById('modal');
+      const content = document.getElementById('case-html');
+
+      if(which === 'weather'){
+        content.innerHTML = `
+          <h2 style="color:var(--primary)">Weather App — Full Stack Case Study</h2>
+          <p>
+            <strong>Short Description:</strong> A responsive full-stack weather application that provides real-time
+            weather data and a 5-day forecast using the OpenWeatherMap API, with a React + Vite frontend and a
+            Spring Boot backend connected to MySQL.
+          </p>
+          <h3>Problem / Goal</h3>
+          <p>
+            Many weather apps are either slow, cluttered, or lack clear breakdowns of current and upcoming conditions.
+            My goal was to build a simple, fast, and responsive app that shows key weather details at a glance, supports
+            both location-based and manual search, and demonstrates integration of a third-party API in a clean full-stack
+            architecture.
+          </p>
+          <h3>My Role &amp; Responsibilities</h3>
+          <ol>
+            <li>Designed the overall architecture, separating the React frontend and Spring Boot backend.</li>
+            <li>Implemented the UI using React and Vite with reusable components and client-side routing.</li>
+            <li>Integrated the OpenWeatherMap API on the backend, including error handling and response mapping.</li>
+            <li>Configured MySQL for storing user queries/logs (for potential analytics and future improvements).</li>
+            <li>Handled environment configuration and API key management.</li>
+          </ol>
+          <h3>Tech Stack</h3>
+          <p>React.js, Vite, Spring Boot, REST API, OpenWeatherMap API, MySQL, Git &amp; GitHub</p>
+          <h3>Key Features</h3>
+          <ul>
+            <li>Current weather based on user location or city name.</li>
+            <li>5-day forecast displayed in a clean, card-based layout.</li>
+            <li>Responsive design for desktop and mobile screens.</li>
+            <li>Clear separation between presentation (frontend) and business logic (backend).</li>
+          </ul>
+        `;
+      } else if (which === 'food') {
+        content.innerHTML = `
+          <h2 style="color:var(--primary)">Food Recipe App — Dockerized Full Stack Project</h2>
+          <p>
+            <strong>Short Description:</strong> A full-stack recipe application where users can browse and search
+            for recipes, view ingredients, and follow step-by-step cooking instructions. The project uses a
+            Dockerized architecture with separate containers for the frontend and backend.
+          </p>
+          <h3>Problem / Goal</h3>
+          <p>
+            Many recipe websites are cluttered and filled with distractions. I wanted to build a clean, fast,
+            and developer-friendly recipe app that also demonstrates how to structure and containerize a modern
+            full-stack project.
+          </p>
+          <h3>My Role &amp; Responsibilities</h3>
+          <ol>
+            <li>Designed the UI in React with a focus on clarity and readability of recipe steps.</li>
+            <li>Built the backend REST APIs in Spring Boot to serve recipe data and handle core business logic.</li>
+            <li>Containerized frontend and backend using Docker and configured them to work together.</li>
+            <li>Wired up API integration between React and Spring Boot, handling loading and error states.</li>
+            <li>Ensured the layout remained responsive across different screen sizes.</li>
+          </ol>
+          <h3>Architecture</h3>
+          <ul>
+            <li><strong>Frontend:</strong> React.js + Vite bundled app running in its own Docker container.</li>
+            <li><strong>Backend:</strong> Spring Boot REST API in a separate Docker container.</li>
+            <li><strong>Communication:</strong> Frontend consumes backend endpoints over HTTP using fetch/axios.</li>
+          </ul>
+          <h3>Key Features</h3>
+          <ul>
+            <li>Recipe listing with titles and quick descriptions.</li>
+            <li>Detailed view showing ingredients and preparation steps.</li>
+            <li>Search/filter functionality (e.g., by name/category, depending on backend support).</li>
+            <li>Responsive design suitable for both mobile and desktop users.</li>
+            <li>Docker setup allowing the entire app to run with simple Docker commands.</li>
+          </ul>
+          <h3>Tech Stack</h3>
+          <p>React.js, Vite, Spring Boot, REST API, Docker, Git &amp; GitHub</p>
+          <h3>What I Learned</h3>
+          <ul>
+            <li>How to structure and containerize a full-stack application using Docker.</li>
+            <li>How to connect a React frontend with a Spring Boot backend through REST APIs.</li>
+            <li>Better separation of concerns between UI layer and business logic.</li>
+            <li>Debugging API-related issues between services running in separate containers.</li>
+          </ul>
+          <p style="margin-top:10px;">
+            <strong>Code:</strong>
+            <a href="https://github.com/1916-pravallika/docker-foodapp-frontend"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="color:var(--accent);text-decoration:none;">
+              View Food Recipe App on GitHub →
+            </a>
+          </p>
+        `;
+      }
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+
+    function closeModal(){
+      const modal = document.getElementById('modal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    function handleBackdropClick(e){
+      if(e.target.id === 'modal'){
+        closeModal();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('modal');
+        if (modal.classList.contains('open')) {
+          closeModal();
+        }
+      }
+    });
+
+    // Simple tilt effect for cards
+    document.querySelectorAll('.card[data-tilt]').forEach(card=>{
+      card.addEventListener('mousemove', (e)=>{
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform =
+          `perspective(900px) rotateX(${(-y*4).toFixed(2)}deg) rotateY(${(x*5).toFixed(2)}deg) translateZ(4px)`;
+      });
+      card.addEventListener('mouseleave', ()=>{
+        card.style.transform = '';
+      });
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    },{threshold:0.14});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
