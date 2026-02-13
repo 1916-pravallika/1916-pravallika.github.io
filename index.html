@@ -830,18 +830,17 @@
             </div>
           </article>
 
-          <!-- Food Recipe App (frontend-only) -->
           <article class="card" data-tilt>
             <div class="card-header">
               <div class="card-title">
                 <span>🍳</span>
-                <span>Food Recipe App — Frontend</span>
+                <span>Ping- Real-Time Messaging Application</span>
               </div>
               <span class="pill-badge">Client-side UI</span>
             </div>
             <p>
-              A clean, responsive recipe UI built with React + Vite. This project is frontend-only — it consumes public
-              recipe JSON or local mock files and stores user preferences in LocalStorage. There is no server-side API required.
+              Developed a real-time messaging application using 
+              MongoDB, Express.js, React.js, and Node.js with user authentication and responsive UI
             </p>
 
             <div class="tags">
@@ -852,11 +851,11 @@
             </div>
 
             <div class="actions">
-              <button class="btn btn-outline" type="button" onclick="openCase('food')">
+              <button class="btn btn-outline" type="button" onclick="openCase('ping')">
                 Read Case Study
               </button>
               <a class="btn btn-primary"
-                 href="https://github.com/1916-pravallika/docker-foodapp-frontend"
+                 href="https://github.com/1916-pravallika/Ping.git"
                  target="_blank"
                  rel="noopener noreferrer">
                  View Code
@@ -1030,45 +1029,55 @@
             <li>No backend required — suitable as a lightweight client app.</li>
           </ul>
         `;
-      } else if (which === 'food') {
-        content.innerHTML = `
-          <h2 style="color:var(--primary)">Food Recipe App — Frontend Case Study</h2>
-          <p>
-            <strong>Short Description:</strong> A clean, responsive recipe UI built with React + Vite. The app
-            reads recipes from local JSON or public endpoints and stores user preferences locally. There is
-            no server-side backend required for the demo version.
-          </p>
-          <h3>Problem / Goal</h3>
-          <p>
-            Provide a distraction-free recipe browsing experience with clear steps and a focus on readability.
-          </p>
-          <h3>My Role &amp; Responsibilities</h3>
-          <ol>
-            <li>Designed and implemented the UI components and client-side navigation.</li>
-            <li>Built client-side data handling to load recipes from JSON or public endpoints.</li>
-            <li>Handled search/filtering on the client and persisted favorites in LocalStorage.</li>
-            <li>Tested responsiveness across devices and optimized the layout.</li>
-          </ol>
-          <h3>Tech Stack</h3>
-          <p>React.js, Vite, Local JSON/public APIs, LocalStorage, Git &amp; GitHub</p>
-          <h3>Key Features</h3>
-          <ul>
-            <li>Recipe listing with quick descriptions and detailed step-by-step views.</li>
-            <li>Client-side search and category filtering.</li>
-            <li>Favorites saved to LocalStorage for a persistent experience without a backend.</li>
-            <li>Responsive design for both mobile and desktop users.</li>
-          </ul>
-          <p style="margin-top:10px;">
-            <strong>Code:</strong>
-            <a href="https://github.com/1916-pravallika/docker-foodapp-frontend"
-               target="_blank"
-               rel="noopener noreferrer"
-               style="color:var(--accent);text-decoration:none;">
-              View Food Recipe App on GitHub →
-            </a>
-          </p>
-        `;
-      }
+      } else if (which === 'ping') {
+      content.innerHTML = `
+      <h2 style="color:var(--primary)">Ping — Real-Time Messaging Application (MERN Stack)</h2>
+      <p>
+        <strong>Short Description:</strong> Ping is a real-time chat application built using the MERN stack
+        (MongoDB, Express.js, React.js, Node.js) that enables users to securely sign up, log in, and exchange
+        messages instantly with a responsive and user-friendly interface.
+      </p>
+
+      <h3>Problem / Goal</h3>
+      <p>
+        Build a scalable real-time communication platform with secure authentication and a smooth chatting
+        experience across devices.
+      </p>
+
+      <h3>My Role &amp; Responsibilities</h3>
+      <ol>
+        <li>Designed and developed the full-stack architecture using MERN.</li>
+        <li>Implemented user authentication using JWT and encrypted passwords.</li>
+        <li>Built real-time messaging using Socket.IO.</li>
+        <li>Developed responsive UI components with React.</li>
+        <li>Created REST APIs for user and chat management.</li>
+        <li>Integrated MongoDB to persist chat history and user data.</li>
+      </ol>
+
+      <h3>Tech Stack</h3>
+      <p>MongoDB, Express.js, React.js, Node.js, Socket.IO, JWT, Git &amp; GitHub</p>
+
+      <h3>Key Features</h3>
+      <ul>
+        <li>Real-time one-to-one messaging.</li>
+        <li>Secure login and signup.</li>
+        <li>Chat history stored in database.</li>
+        <li>Responsive design for mobile and desktop.</li>
+        <li>Clean and intuitive chat interface.</li>
+      </ul>
+
+      <p style="margin-top:10px;">
+        <strong>Code:</strong>
+        <a href="https://github.com/1916-pravallika/Ping.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color:var(--accent);text-decoration:none;">
+          View Ping App on GitHub →
+        </a>
+      </p>
+    `;
+  }
+
 
       modal.classList.add('open');
       modal.setAttribute('aria-hidden','false');
